@@ -84,7 +84,7 @@ int totalCredits(){
 }
 
 struct courseMarks{
- std::vector<double> grades;
+ std::vector<std::string> grades;
  int credits{};
 };
 
@@ -92,14 +92,14 @@ void userInput(){
     std::map<std::string, courseMarks> courseMap;
     
     int count=numberOfCourses();
-    double grade{};
+    std::string grade{};
 
     for(int i=0;i<count;i++){
        std::string subject{courseTaken()};
        int numGrades{totalGrades()};
        int credits{totalCredits()};
        
-       std::vector<double> grades;
+       std::vector<std::string> grades;
         
         for(int j=0;j<numGrades;j++){
          std::cout<<"Type your grade : "<<"\n";
@@ -113,7 +113,7 @@ void userInput(){
 
     for (const auto& course : courseMap) {
         std::cout << "Course: " << course.first << ", Credits: " << course.second.credits << ", Grades: ";
-        for (double grade : course.second.grades) {
+        for (std::string grade : course.second.grades) {
             std::cout << grade << " ";
         }
         std::cout << std::endl;
@@ -121,6 +121,17 @@ void userInput(){
 
 
 }
+
+void gpa(){
+
+}
+
+void cgpa(){
+
+}
+
+
+
 
 
 int main(){
