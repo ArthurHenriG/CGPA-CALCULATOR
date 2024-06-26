@@ -28,26 +28,60 @@ int numberOfCourses(){
 }
 
 std::string courseTaken(){
-    std::cout<<"Name of the course taken: "<<"\n";
-    std::string courseName{};
-    std::cin>>courseName;
-    return courseName;
+
+     std::cout<<"Name of the course taken: "<<"\n";
+     std::string courseName{};
+     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+     std::getline(std::cin,courseName);
+     return courseName;
 }
 
 int totalGrades(){
-    std::cout<<"Write the number of grades : "<<"\n";
+
     int numGrades{};
-    std::cin>>numGrades;
+   
+     while (true)
+        {
+     std::cout<<"Write the number of grades : "<<"\n";
+     std::cin>>numGrades;
+     
+     if(std::cin.fail()){
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
+                       '\n');
+         std::cout<<"Write a valid integer "<<"\n";
+         
+     }else{
+         break;
+     }
+
+        }
     return numGrades;
 }
 
 int totalCredits(){
-    std::cout<<"Write your credits of the course typed before : "<<"\n";
+
     int credits{};
-    std::cin>>credits;
-    return credits;
+    
+     while (true)
+        {
+     std::cout<<"Write your credits of the course typed before : "<<"\n";
+     std::cin>>credits;
+     
+     if(std::cin.fail()){
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
+                       '\n');
+         std::cout<<"Write a valid integer "<<"\n";
+         
+     }else{
+         break;
+     }
+
 }
 
+    return credits;
+}
 
 struct courseMarks{
  std::vector<double> grades;
@@ -58,7 +92,6 @@ void userInput(){
     std::map<std::string, courseMarks> courseMap;
     
     int count=numberOfCourses();
-    std::cout<<count;
     double grade{};
 
     for(int i=0;i<count;i++){
