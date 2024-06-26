@@ -6,10 +6,25 @@
 
 
 int numberOfCourses(){
-    std::cout<<"Write the number of courses taken: "<<"\n";
     int numCourses{};
+    
+     while (true)
+        {
+    std::cout<<"Write the number of courses taken: "<<"\n";
     std::cin>>numCourses;
-    return numCourses;
+     
+     if(std::cin.fail()){
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),
+                       '\n');
+         std::cout<<"Write a valid integer"<<"\n";
+         
+     }else{
+         break;
+     }
+
+        }
+          return numCourses;
 }
 
 std::string courseTaken(){
@@ -34,8 +49,6 @@ int totalCredits(){
 }
 
 
-
-
 struct courseMarks{
  std::vector<double> grades;
  int credits{};
@@ -45,6 +58,7 @@ void userInput(){
     std::map<std::string, courseMarks> courseMap;
     
     int count=numberOfCourses();
+    std::cout<<count;
     double grade{};
 
     for(int i=0;i<count;i++){
@@ -74,10 +88,6 @@ void userInput(){
 
 
 }
-
-
-
-
 
 
 int main(){
